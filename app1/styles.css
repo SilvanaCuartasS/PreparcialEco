@@ -1,0 +1,98 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background: linear-gradient(0deg, rgba(0,115,140,1) 0%, rgba(0,212,255,1) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    color: aliceblue;
+}
+
+.title{
+    font-size: 40px;
+    margin-bottom: 40px;
+}
+
+.container{
+    width: 70%;
+    padding: 2%;
+    height: 500px;
+    background-color: rgb(38, 38, 38);
+    box-shadow: inset 0px 0px 47px -15px rgba(0,0,0,0.75);
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10%;
+}
+
+#register{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20%;  
+}
+
+.hi{
+    font-size: 35px;
+}
+
+input{
+    width: 80%; /* Ajusta el ancho */
+    max-width: 300px; /* Para que no se haga demasiado grande en pantallas grandes */
+    padding: 15px; /* Más espacio interno */
+    font-size: 22px; /* Texto más grande */
+    border-radius: 10px; /* Bordes redondeados */
+    border: none;
+    text-align: center; /* Centrar el texto */
+    outline: none; /* Quita el borde azul en algunos navegadores */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+}
+
+#joinBtn, #btnScreamMarco, #btnScreamPolo, .btnPolo{
+    padding: 20px 20px 20px 20px ;
+    font-weight: bolder;
+    background-color: rgb(255, 238, 127);
+    color: rgb(53, 53, 53);
+    border: none;
+    border-radius: 10px;
+}
+
+#btnScreamPolo:disabled {
+    background-color: gray;
+    color: white;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+#start, #results{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px; 
+}
+
+#role{
+    color: rgb(255, 238, 127);
+    font-size: 25px;
+}
+
+#nickname{
+    font-size: 35px;
+}
+
+#icon{
+    margin-top: 20px;
+}
+    
