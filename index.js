@@ -1,13 +1,15 @@
 const express = require("express");
-const path = require("path");
-const { Server } = require("socket.io");
-const { createServer } = require("http");
+const path = require("path"); //El que ayuda manejar y manipular rutas de archivos y directorios
+const { Server } = require("socket.io"); // habilita la comunicación en tiempo real entre el servidor y clientes
+const { createServer } = require("http"); //Crea el servidor http
 
-const app = express();
-const httpServer = createServer(app);
+const app = express(); //Instancia de express
+const httpServer = createServer(app); //Creo el servidor
 
 const io = new Server(httpServer, {
+  //Ruta de conexión
   path: "/real-time",
+  //Permite que cualquier cliente se conecte al servidor
   cors: {
     origin: "*",
   },
@@ -18,19 +20,21 @@ app.use("/app1", express.static(path.join(__dirname, "app1")));
 
 let users = [];
 const roles = ["Marco", "Polo", "Polo Especial"];
-let availableRoles = [...roles];
+let availableRoles = [...roles]; //Copia de roles
 
 app.get("/users", (req, res) => {
   res.send(users);
 });
 
-app.post("/join-game", (req, res) => {
+//Maneja la solicitud de un jugador para unirse al juego y le asigna un rol
+app.post("/join-game", (req, res) => {  
   const { name } = req.body;
 
   if (!name) {
     return res.status(400).json({ message: "Ops, data missing" });
   }
 
+  //Si no hay roles disponibles, se envía un mensaje de error
   if (availableRoles.length === 0) {
     return res
       .status(400)
@@ -39,16 +43,16 @@ app.post("/join-game", (req, res) => {
 
   const assignRole = () => {
     const i = Math.floor(Math.random() * availableRoles.length);
-    return availableRoles.splice(i, 1)[0];
+    return availableRoles.splice(i, 1)[0]; //Elimina y devuelve un elemento aleatorio del array
   };
 
   const user = {
-    id: users.length + 1,
+    id: users.length + 1, //Asigna un ID único al usuario
     name,
     rol: assignRole(),
   };
 
-  users.push(user);
+  users.push(user);//Se inyecta
 
   console.log("Super el registro:", users);
 
@@ -59,6 +63,7 @@ app.post("/join-game", (req, res) => {
   });
 });
 
+//Inicia el juego cuando hay suficientes jugadores
 app.post("/start-game", (req, res) => {
   const { text } = req.body;
 

@@ -40,7 +40,7 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 20%;  
+    gap: 50px;  
 }
 
 .hi{

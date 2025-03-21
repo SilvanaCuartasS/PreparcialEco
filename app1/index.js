@@ -105,7 +105,7 @@ function notifyMarco() {
     .then((response) => response.json())
     .then((data) => {
       alert(data.message);
-      console.log("player de la data:" + data.idPlayer); //aqui si lo muestra bien
+      console.log("player de la data:" + data.idPlayer); 
       socket.emit("notify-marco", data.idPlayer);
     })
     .catch((error) => console.error("Error:", error));
